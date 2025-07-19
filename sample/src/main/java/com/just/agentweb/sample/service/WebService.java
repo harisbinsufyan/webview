@@ -11,7 +11,7 @@ import android.webkit.WebView;
  * @author xiaozhongcen
  * @date 20-8-18
  * @since 1.0.0
- * 提前初始化进程减少白屏
+ * Pre-initialize process to reduce white screen
  */
 public class WebService extends Service {
 
@@ -20,7 +20,7 @@ public class WebService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e(TAG, "init process");
+        Log.e(TAG, "Initialize process");
         try {
             new WebView(this.getApplicationContext());
         }catch (Throwable throwable){

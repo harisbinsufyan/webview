@@ -10,7 +10,7 @@ import com.queue.library.GlobalQueue;
 
 /**
  * Created by cenxiaozhong on 2017/5/23.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class App extends Application {
@@ -20,10 +20,10 @@ public class App extends Application {
         super.onCreate();
 
         /**
-         * 说明， WebView 初处初始化耗时 250ms 左右。
-         * 提前初始化WebView ，好处可以提升页面初始化速度，减少白屏时间，
-         * 坏处，拖慢了App 冷启动速度，如果 WebView 配合 VasSonic 使用，
-         * 建议不要在此处提前初始化 WebView 。
+         * Note: WebView initialization takes about 250ms.
+         * Pre-initializing WebView can improve page initialization speed and reduce white screen time.
+         * The downside is that it slows down App cold start speed. If WebView is used with VasSonic,
+         * it is recommended not to pre-initialize WebView here.
          */
 //        WebView mWebView=new WebView(new MutableContextWrapper(this));
 
@@ -35,7 +35,7 @@ public class App extends Application {
 //        LeakCanary.install(this);
         // Normal app init code...
 
-        //implementation 'com.github.Justson:dispatch-queue:v1.0.5'
+        // implementation 'com.github.Justson:dispatch-queue:v1.0.5'
         GlobalQueue.getMainQueue().postRunnableInIdleRunning(new Runnable() {
             @Override
             public void run() {

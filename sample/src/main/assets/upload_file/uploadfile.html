@@ -10,7 +10,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <link rel="stylesheet" type="text/css" href="./upload.css">
-    <title>上传身份证</title>
+    <title>Upload ID Card</title>
     <script type="text/javascript" src="event.js"></script>
     <script type="text/javascript" src="../jquery/jquery-3.2.1.min.js"></script>
     <!--<script type="text/javascript" src="jquery.js"></script>-->
@@ -33,7 +33,7 @@
     }
 
     $(function() {
-        form.reset(); //清除浏览器记录的上次记录
+        form.reset(); // Clear browser's last record
         var file;
         $(form).on("change", "#file_upload", function() {
 
@@ -57,20 +57,20 @@
 
 
                 var imgObj = document.getElementById("preview");
-                // 两个坑:
-                // 1、在设置filter属性时，元素必须已经存在在DOM树中，动态创建的Node，也需要在设置属性前加入到DOM中，先设置属性在加入，无效；
-                // 2、src属性需要像下面的方式添加，上面的两种方式添加，无效；
+                // Two pitfalls:
+                // 1. When setting filter properties, elements must already exist in the DOM tree. Dynamically created Nodes also need to be added to the DOM before setting properties. Setting properties first and then adding is invalid;
+                // 2. The src property needs to be added in the following way. The two methods above are invalid;
                 imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
                 imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
 
             }
-            //输出选中结果
+            // Output selected result
             console.log(this.value);
             alert(this.value);
-            //每次选中都保存旧元素，并使用新的控件替换
+            // Save old element each time selected and replace with new control
             $(this).clone().replaceAll(file = this);
         }).submit(function() {
-            //提交时把之前保存的旧元素替换回去
+            // Replace with previously saved old element when submitting
             $("#file_upload").replaceWith(file);
         });
 
@@ -78,7 +78,7 @@
             alert(this.value);
             document.getElementById("preview_path").innerText=this.value;
          }).submit(function() {
-            //提交时把之前保存的旧元素替换回去
+            // Replace with previously saved old element when submitting
             $("#file_upload2").replaceWith(file);
         });
     });
@@ -90,12 +90,12 @@
 <body style="width: 100%;height: 100%;margin: 0;padding: 0; position: relative;background: #ebebeb">
 <div style="position: absolute; left: 0 ;right: 0 ; top: 0 ; margin:0 auto;max-width: 750px;height: 100%">
     <div id="div_id" style="width: 100% ; height:100%;border: 1px ; margin: 0px;">
-        <!-- 头部nav -->
+        <!-- Header nav -->
         <div id="nav"
              style="width: 100%; height: 10%;background: #f9f9f9;padding-top: 0px ;position: absolute;padding: 0px">
             <div style="width: 200px;height: 100px; position:relative;left: 50%;top: 50%;margin-left: -100px;margin-top: -50px;overflow: scroll;">
                 <font color="#000">
-                    <h4 style="text-align:center;line-height: 50px;">请上传身份证</h4></font>
+                    <h4 style="text-align:center;line-height: 50px;">Please upload ID card</h4></font>
             </div>
             <div style="width: 100%;height: 1px;background: #c6c6c6;position: relative;margin-top: -50px;top: 99%">
             </div>
@@ -107,9 +107,9 @@
                      style="display: block;margin: 0 auto;max-width: 60%;margin-top: 20px">
                 </img>
 
-                <p class="fontBlue ta-c mt5" style="text-align: center;">上传身份证</p>
+                <p class="fontBlue ta-c mt5" style="text-align: center;">Upload ID card</p>
                 <a href="javascript:;" class="file"
-                   style="display: block;margin: 0 auto;width: 50%;height: 30px;text-align: center;line-height: 30px;margin-bottom: 20px">选择文件
+                   style="display: block;margin: 0 auto;width: 50%;height: 30px;text-align: center;line-height: 30px;margin-bottom: 20px">Select file
                     <form id="form">
                         <input id="file_upload" type="file" name="" id="" accept=*/*,"
                                capture="camera" multiple="multiple">
@@ -118,10 +118,10 @@
             </div>
             <div style="margin: 0 auto;width: 80%;height: 30%;border:3px solid #41a0f2;margin-top: 50px;overflow: scroll;">
 
-                <div id="preview_path" class="fontBlue ta-c mt5" style="text-align: center;color:#000000;">暂无视屏</div>
-                <p class="fontBlue ta-c mt5" style="text-align: center;">上传视频</p>
+                <div id="preview_path" class="fontBlue ta-c mt5" style="text-align: center;color:#000000;">No video</div>
+                <p class="fontBlue ta-c mt5" style="text-align: center;">Upload video</p>
                 <a href="javascript:;" class="file"
-                   style="display: block;margin: 0 auto;width: 50%;height: 30px;text-align: center;line-height: 30px;margin-bottom: 20px">选择文件
+                   style="display: block;margin: 0 auto;width: 50%;height: 30px;text-align: center;line-height: 30px;margin-bottom: 20px">Select file
                     <form id="form2">
                         <input id="file_upload2" type="file" name="" accept="video/*"
                                capture="camera" multiple="multiple">

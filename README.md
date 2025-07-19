@@ -1,14 +1,13 @@
-
 <div style="display: flex;flex-direction: row;justify-content: center" width="100%">
       <img src="./img/logo.png"></img>
 </div>
 
-## AgentWeb 介绍
+## AgentWeb Introduction
 
-AgentWeb 是一个基于的 Android WebView ，极度容易使用以及功能强大的库，提供了 Android WebView 一系列的问题解决方案 ，并且轻量和极度灵活，详细使用请参照上面的 Sample 。
+AgentWeb is an Android WebView-based library that is extremely easy to use and powerful, providing a series of solutions for Android WebView problems, and is lightweight and extremely flexible. For detailed usage, please refer to the Sample above.
 	
 
-## Gradle 引入
+## Gradle Import
 
 ```groovy
 allprojects {
@@ -25,45 +24,45 @@ allprojects {
 
    ```groovy
     implementation 'io.github.justson:agentweb-core:v5.1.1-androidx' 
-    implementation 'io.github.justson:agentweb-filechooser:v5.1.1-androidx' // (可选)
-    implementation 'com.github.Justson:Downloader:v5.0.4-androidx' // (可选)
+    implementation 'io.github.justson:agentweb-filechooser:v5.1.1-androidx' // (optional)
+    implementation 'com.github.Justson:Downloader:v5.0.4-androidx' // (optional)
    
    ```
 
 
-## 相关
-* [flying-pigeon跨进程IPC组件](https://github.com/Justson/flying-pigeon)
+## Related Projects
+* [flying-pigeon Cross-process IPC component](https://github.com/Justson/flying-pigeon)
 * [AgentWebX5](https://github.com/Justson/AgentWebX5)
-* [WebView 进度条](https://github.com/Justson/CoolIndicator)
-* [Downloader 一个轻量的文件下载器](https://github.com/Justson/Downloader)
+* [WebView Progress Bar](https://github.com/Justson/CoolIndicator)
+* [Downloader A lightweight file downloader](https://github.com/Justson/Downloader)
 
 	
 
 
-## 注意事项
-* 支付宝使用需要引入支付宝SDK ，并在项目中依赖 ， 微信支付不需要做任何操作。
-* AgentWeb 内部使用了 `AlertDialog` 需要依赖 `AppCompat` 主题 。 
-* `setAgentWebParent` 不支持  `ConstraintLayout` 。
-* `mAgentWeb.getWebLifeCycle().onPause();`会暂停应用内所有`WebView` 。
-* `minSdkVersion` 低于等于16以下自定义`WebView`请注意与 `JS` 之间通信安全。
+## Important Notes
+* Alipay usage requires importing the Alipay SDK and depending on it in the project. WeChat Pay requires no additional operations.
+* AgentWeb internally uses `AlertDialog` which requires dependency on `AppCompat` theme.
+* `setAgentWebParent` does not support `ConstraintLayout`.
+* `mAgentWeb.getWebLifeCycle().onPause();` will pause all `WebView` in the application.
+* For `minSdkVersion` lower than or equal to 16, please pay attention to communication security between custom `WebView` and `JS`.
 
 
 
 
-## 文档帮助
-* [Wiki](https://github.com/Justson/AgentWeb/wiki)(不全)
-* `Sample`(推荐，详细) 
-* [更新日志](./releasenote.md)
+## Documentation Help
+* [Wiki](https://github.com/Justson/AgentWeb/wiki) (incomplete)
+* `Sample` (recommended, detailed) 
+* [Release Notes](./releasenote.md)
 
 
 
-## 有问题或者有更好的建议
+## Issues or Better Suggestions
 * [![QQ0Group][qq0groupsvg]][qq0group]
-* 欢迎提 [Issues](https://github.com/Justson/AgentWeb/issues)
+* Welcome to submit [Issues](https://github.com/Justson/AgentWeb/issues)
 
 
-## 赞赏
-开源不易，你的支持是我更新的动力。
+## Donation
+Open source is not easy, your support is my motivation to update.
 
 <a href="img/alipay.jpg"><img src="img/alipay.jpg" width="30%"/></a> <a href="img/wechat_pay.jpg"><img src="img/wechat_pay.jpg" width="30%"/></a> <a href="img/alipay.jpg"><img src="img/alipay.jpg" width="30%"/></a>
 
@@ -97,7 +96,4 @@ limitations under the License.
 
 ​	
 
-​	  
-
-
-
+​

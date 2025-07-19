@@ -41,7 +41,7 @@ import static com.just.agentweb.sample.sonic.SonicJavaScriptInterface.PARAM_CLIC
 
 /**
  * Created by cenxiaozhong on 2017/5/23.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class CommonActivity extends AppCompatActivity {
@@ -74,83 +74,83 @@ public class CommonActivity extends AppCompatActivity {
 
 		switch (key) {
 
-            /*Fragment 使用AgenWeb*/
-			case FLAG_GUIDE_DICTIONARY_USE_IN_FRAGMENT: //项目中请使用常量代替0 ， 代码可读性更高
-				/*下载文件*/
+            /* Fragment using AgentWeb */
+			case FLAG_GUIDE_DICTIONARY_USE_IN_FRAGMENT: // Please use constants instead of 0 in projects for better code readability
+				/* Download files */
 			case FLAG_GUIDE_DICTIONARY_FILE_DOWNLOAD:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "http://android.myapp.com/");
 				break;
-			/*input标签上传文件*/
+			/* Input tag file upload */
 			case FLAG_GUIDE_DICTIONARY_INPUT_TAG_PROBLEM:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/upload_file/uploadfile.html");
 				break;
-            /*Js上传文件*/
+            /* JS file upload */
 			case FLAG_GUIDE_DICTIONARY_JS_JAVA_COMUNICATION_UPLOAD_FILE:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/upload_file/jsuploadfile.html");
 				break;
-            /*Js*/
+            /* JS */
 			case FLAG_GUIDE_DICTIONARY_JS_JAVA_COMMUNICATION:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = JsAgentWebFragment.getInstance(mBundle = new Bundle()), JsAgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/js_interaction/hello.html");
 				break;
-			/*webrtc*/
+			/* WebRTC */
 			case FLAG_GUIDE_DICTIONARY_WEBRTC:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "https://jeromeetienne.github.io/AR.js/three.js/examples/mobile-performance.html");
 				break;
-            /*优酷全屏播放视屏*/
+            /* Youku fullscreen video playback */
 			case FLAG_GUIDE_DICTIONARY_VIDEO_FULL_SCREEN:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "https://m.youku.com/alipay_video/id_XNTExMjg3Njg1Mg==.html?spm=a2hww.12630578.drawer1.dzj1_1");
 //                mBundle.putString(AgentWebFragment.URL_KEY, "https://v.qq.com/x/page/i0530nu6z1a.html");
 				break;
-            /*淘宝自定义进度条*/
+            /* Taobao custom progress bar */
 			case FLAG_GUIDE_DICTIONARY_CUSTOM_PROGRESSBAR:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = CustomIndicatorFragment.getInstance(mBundle = new Bundle()), CustomIndicatorFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "https://m.taobao.com/?sprefer=sypc00");
 				break;
-            /*豌豆荚*/
+            /* Wandoujia */
 			case FLAG_GUIDE_DICTIONARY_CUSTOM_WEBVIEW_SETTINGS:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = CustomSettingsFragment.getInstance(mBundle = new Bundle()), CustomSettingsFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "https://m.wandoujia.com/");
 				break;
 
-            /*短信*/
+            /* SMS */
 			case FLAG_GUIDE_DICTIONARY_LINKS:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/sms/sms.html");
 				break;
-            /* 自定义 WebView */
+            /* Custom WebView */
 			case FLAG_GUIDE_DICTIONARY_CUTSTOM_WEBVIEW:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = CustomWebViewFragment.getInstance(mBundle = new Bundle()), CustomWebViewFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "");
 				break;
-            /*回弹效果*/
+            /* Bounce effect */
 			case FLAG_GUIDE_DICTIONARY_BOUNCE_EFFACT:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = BounceWebFragment.getInstance(mBundle = new Bundle()), BounceWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "http://m.mogujie.com/?f=mgjlm&ptp=_qd._cps______3069826.152.1.0");
 				break;
 
-            /*JsBridge 演示*/
+            /* JSBridge demo */
 			case FLAG_GUIDE_DICTIONARY_JSBRIDGE_SAMPLE:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = JsbridgeWebFragment.getInstance(mBundle = new Bundle()), JsbridgeWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/jsbridge/demo.html");
 				break;
 
-            /*SmartRefresh 下拉刷新*/
+            /* SmartRefresh pull-to-refresh */
 			case FLAG_GUIDE_DICTIONARY_PULL_DOWN_REFRESH:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = SmartRefreshWebFragment.getInstance(mBundle = new Bundle()), SmartRefreshWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "http://www.163.com/");
 				break;
-                /*地图*/
+                /* Map */
 			case FLAG_GUIDE_DICTIONARY_MAP:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putString(AgentWebFragment.URL_KEY, "https://map.baidu.com/mobile/webapp/index/index/#index/index/foo=bar/vt=map");
 				break;
-                /*首屏秒开*/
+                /* Instant first screen loading */
 			case FLAG_GUIDE_DICTIONARY_VASSONIC_SAMPLE:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = VasSonicFragment.create(mBundle = new Bundle()), AgentWebFragment.class.getName());
 				mBundle.putLong(PARAM_CLICK_TIME, getIntent().getLongExtra(PARAM_CLICK_TIME, -1L));
@@ -167,7 +167,7 @@ public class CommonActivity extends AppCompatActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		//一定要保证 mAentWebFragemnt 回调
+        // Must ensure mAgentWebFragment callback
 //		mAgentWebFragment.onActivityResult(requestCode, resultCode, data);
 	}
 

@@ -20,19 +20,19 @@ public class AutoHidenToolbarActivity extends AppCompatActivity implements View.
     private CoordinatorLayout main;
     private Toolbar toolbar;
     /**
-     * 后退
+     * Back
      */
     private TextView btnBack;
     /**
-     * 前进
+     * Forward
      */
     private TextView btnForward;
     /**
-     * 刷新
+     * Refresh
      */
     private TextView btnRefresh;
     /**
-     * 菜单
+     * Menu
      */
     private TextView btnMenu;
 
@@ -80,21 +80,21 @@ public class AutoHidenToolbarActivity extends AppCompatActivity implements View.
                 if (mAgentWeb.getWebCreator().getWebView().canGoBack()) {
                     mAgentWeb.back();
                 } else {
-                    Toast.makeText(this, "无法后退", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Cannot go back", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_forward:
                 if (mAgentWeb.getWebCreator().getWebView().canGoForward()) {
                     mAgentWeb.getWebCreator().getWebView().goForward();
                 } else {
-                    Toast.makeText(this, "无法前进", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Cannot go forward", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_refresh:
                 mAgentWeb.getWebCreator().getWebView().reload();
                 break;
             default:
-                Toast.makeText(this, "这是菜单选项", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "This is menu option", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -21,7 +21,7 @@
       // body...
       //console.log("call android")
       if(window.android!=null&&typeof(window.android)!="undefined"){
-        window.android.callAndroid("你好，Android! ");
+        window.android.callAndroid("Hello, Android!");
       }else{
          alert(typeof(window.android));
       }
@@ -30,20 +30,20 @@
 
   function callByAndroid(){
       console.log("callByAndroid")
-      alert("Js收到消息");
-      showElement("Js收到消息-->无参方法callByAndroid被调用");
+      alert("JS received message");
+      showElement("JS received message-->No parameter method callByAndroid was called");
   }
 
   function callByAndroidParam(msg1){
      console.log("callByAndroid_param")
-    alert("Js收到消息："+msg1);
-    showElement("Js收到消息-->方法callByAndroidParam被调用,参数:"+msg1);
+    alert("JS received message: "+msg1);
+    showElement("JS received message-->Method callByAndroidParam was called, parameter: "+msg1);
 
   }
   function callByAndroidMoreParams(objs,msg2,msg3){
      
-     alert("Js收到消息："+"id:"+objs.id.toString()+" name:"+objs.name+" age:"+objs.age.toString()+msg2+msg3);
-    showElement("Js收到消息-->方法callByAndroidMoreParam被调用 , 参数1:"+objs+"  参数2:"+msg2+"  参数3:"+msg3);
+     alert("JS received message: "+"id:"+objs.id.toString()+" name:"+objs.name+" age:"+objs.age.toString()+msg2+msg3);
+    showElement("JS received message-->Method callByAndroidMoreParam was called, parameter1: "+objs+"  parameter2: "+msg2+"  parameter3: "+msg3);
      return "ok";
   }
 
@@ -57,10 +57,10 @@
 
 
   function showElement(msg){
-      var div   =document.getElementById("div_box");  //获取div
-      var ele=document.createElement('h6');    //创建h2元素节点
-      ele.innerHTML=msg;                //设置h2节点的内容
-      div.appendChild(ele);                    //添加子节点ele
+      var div   =document.getElementById("div_box");  // Get div
+      var ele=document.createElement('h6');    // Create h2 element node
+      ele.innerHTML=msg;                // Set h2 node content
+      div.appendChild(ele);                    // Add child node ele
 
 
 }

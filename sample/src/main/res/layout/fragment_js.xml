@@ -9,7 +9,7 @@
     <Button
         android:textColor="@color/white"
         android:layout_marginTop="30dp"
-        android:text="调用Js，无参数方法"
+        android:text="Call JS, no parameter method"
         android:textSize="14sp"
         android:id="@+id/callJsNoParamsButton"
         android:background="@drawable/selector_drawable_for_btn"
@@ -23,7 +23,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/selector_drawable_for_btn"
         android:layout_marginLeft="20dp"
-        android:text="调用Js，一个参数方法"
+        android:text="Call JS, one parameter method"
         android:textAllCaps="false"
         android:textSize="14sp"
         android:id="@+id/callJsOneParamsButton"
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:text="调用Js，多个参数方法"
+        android:text="Call JS, multiple parameter method"
         android:textSize="14sp"
         android:id="@+id/callJsMoreParamsButton"
         android:textColor="@color/white"
@@ -46,7 +46,7 @@
         />
 
     <Button
-        android:text="Android-Js-Android"
+        android:text="Android-JS-Android"
         android:textSize="14sp"
         android:id="@+id/jsJavaCommunicationButton"
         android:textColor="@color/white"

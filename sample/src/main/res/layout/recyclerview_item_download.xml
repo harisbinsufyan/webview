@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:gravity="left"
-            android:text="当前进度"
+            android:text="Current progress"
             android:textColor="@color/colorPrimary"
             android:textSize="12sp"
             />
@@ -52,7 +52,7 @@
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:text="开始"
+        android:text="Start"
         tools:ignore="RtlCompat"/>
 
 </RelativeLayout>

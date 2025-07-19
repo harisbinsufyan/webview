@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 
 /**
  * Created by cenxiaozhong on 2017/7/1.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class JsbridgeWebFragment extends AgentWebFragment {
@@ -78,7 +78,7 @@ public class JsbridgeWebFragment extends AgentWebFragment {
 		Location location = new Location();
 		location.address = "SDU";
 		user.location = location;
-		user.name = "Agentweb --> Jsbridge";
+		user.name = "AgentWeb --> JSBridge";
 		mBridgeWebView.callHandler("functionInJs", new Gson().toJson(user), new CallBackFunction() {
 			@Override
 			public void onCallBack(String data) {

@@ -15,7 +15,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 /**
  * Created by cenxiaozhong on 2017/7/1.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class SmartRefreshWebFragment extends BounceWebFragment {

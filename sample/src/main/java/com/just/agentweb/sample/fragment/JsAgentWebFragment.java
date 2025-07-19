@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 /**
  * Created by cenxiaozhong on 2017/5/26.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class JsAgentWebFragment extends AgentWebFragment {
@@ -49,7 +49,7 @@ public class JsAgentWebFragment extends AgentWebFragment {
 
 
         if(mAgentWeb!=null){
-            //注入对象
+            // Inject object
             mAgentWeb.getJsInterfaceHolder().addJavaObject("android",new AndroidInterface(mAgentWeb,this.getActivity()));
         }
         view.findViewById(R.id.callJsNoParamsButton).setOnClickListener(mOnClickListener);
@@ -74,7 +74,7 @@ public class JsAgentWebFragment extends AgentWebFragment {
                     break;
 
                 case R.id.callJsOneParamsButton:
-                    mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroidParam","Hello ! Agentweb");
+                    mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroidParam","Hello! AgentWeb");
                     break;
 
                 case R.id.callJsMoreParamsButton:
@@ -87,7 +87,7 @@ public class JsAgentWebFragment extends AgentWebFragment {
 
                     break;
                 case R.id.jsJavaCommunicationButton:
-                    mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroidInteraction","你好Js");
+                    mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroidInteraction","Hello JS");
                     break;
             }
 
@@ -100,7 +100,7 @@ public class JsAgentWebFragment extends AgentWebFragment {
         try {
             JSONObject mJSONObject=new JSONObject();
             mJSONObject.put("id",1);
-            mJSONObject.put("name","Agentweb");
+            mJSONObject.put("name","AgentWeb");
             mJSONObject.put("age",18);
             result= mJSONObject.toString();
         }catch (Exception e){

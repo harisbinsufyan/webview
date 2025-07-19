@@ -18,7 +18,7 @@ import com.just.agentweb.sample.widget.WebLayout;
 
 /**
  * Created by cenxiaozhong on 2017/7/1.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class BounceWebFragment extends AgentWebFragment {
@@ -53,7 +53,7 @@ public class BounceWebFragment extends AgentWebFragment {
 				.createAgentWeb()//
 				.ready()//
 				.go(getUrl());
-		// 得到 AgentWeb 最底层的控件
+		// Get the bottom-most control of AgentWeb
 		addBGChild((FrameLayout) mAgentWeb.getWebCreator().getWebParentLayout());
 		initView(view);
 
@@ -67,7 +67,7 @@ public class BounceWebFragment extends AgentWebFragment {
 	protected void addBGChild(FrameLayout frameLayout) {
 
 		TextView mTextView = new TextView(frameLayout.getContext());
-		mTextView.setText("技术由 AgentWeb 提供");
+		mTextView.setText("Powered by AgentWeb");
 		mTextView.setTextSize(16);
 		mTextView.setTextColor(Color.parseColor("#727779"));
 		frameLayout.setBackgroundColor(Color.parseColor("#272b2d"));

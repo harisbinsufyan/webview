@@ -10,7 +10,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <link rel="stylesheet" type="text/css" href="./upload.css">
-    <title>上传身份证</title>
+    <title>Upload ID Card</title>
     <script type="text/javascript" src="event.js"></script>
     <script language="javascript">
     /**
@@ -51,7 +51,7 @@
         bindEvent(ip, 'click', function(e) {
             // alert("我是" + this + "元素, 你点击了我!");
 
-            //alert("Js  调 Android 方法成功");
+            // alert("JS called Android method successfully");
             if (window.agentWeb != null && typeof(window.agentWeb) != "undefined") {
                 window.agentWeb.uploadFile();
             } else {
@@ -64,21 +64,21 @@
 
     });
 
-    //这里返回来的是一个 Json 数组 //
+    // What returns here is a JSON array
     function uploadFileResult(objs) {
 
         // console.log(message);
-        //alert(objs);
-        //alert("Android 调 Js 方法");
+        // alert(objs);
+        // alert("Android called JS method");
 
         if (objs == null || typeof(objs) == "undefined" || objs.length == 0) {
 
-            //alert("");
+            // alert("");
 
         } else {
 
             var img = document.getElementById("preview");
-            /*for(var i=0;i<objs.length;i++){  //
+            /* for(var i=0;i<objs.length;i++){  //
             img.src="data:image/png;base64," + objs[i].fileBase64*/
             if (objs[0] == null || objs[0] == 'undefined' || objs[0] == '' || objs[0].fileBase64 == null || objs[0].fileBase64 == 'undefined') {
 
@@ -98,11 +98,11 @@
 <body style="width: 100%;height: 100%;margin: 0;padding: 0; position: relative;">
     <div style="position: absolute; left: 0 ;right: 0 ; top: 0 ; margin:0 auto;max-width: 750px;height: 100%">
         <div id="div_id" style="width: 100% ; height:100%;border: 1px ;background:#000000 ; margin: 0px;">
-            <!-- 头部nav -->
+            <!-- Header nav -->
             <div id="nav" style="width: 100%; height: 10%;background: #f9f9f9;padding-top: 0px ;position: absolute;padding: 0px">
                 <div style="width: 200px;height: 100px; position:relative;left: 50%;top: 50%;margin-left: -100px;margin-top: -50px;overflow: scroll;">
                     <font color="#000">
-                        <h4 style="text-align:center;line-height: 50px;">请上传身份证</h4> </font>
+                        <h4 style="text-align:center;line-height: 50px;">Please upload ID card</h4> </font>
                 </div>
                 <div style="width: 100%;height: 1px;background: #c6c6c6;position: relative;margin-top: -50px;top: 99%">
                 </div>
@@ -113,9 +113,9 @@
                     <img id="preview" src="./id.png" style="display: block;margin: 0 auto;max-width: 80%;margin-top: 20px;">
                     </img>
 
-                    <p class="fontBlue ta-c mt5" style="text-align: center;">上传身份证</p>
+                    <p class="fontBlue ta-c mt5" style="text-align: center;">Upload ID card</p>
                     <div id="file_upload" href="javascript:;" class="file" style="display: block;margin: 0 auto;width: 50%;height: 25px;text-align: center;line-height: 25px;margin-bottom: 20px">
-                        选择文件
+                        Select file
                     </div>
                 </div>
             </div>

@@ -76,7 +76,7 @@ import top.zibin.luban.Luban;
 
 /**
  * Created by cenxiaozhong on 2017/5/15.
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileCompressor.FileCompressEngine {
@@ -90,7 +90,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     private ImageView mMoreImageView;
     private PopupMenu mPopupMenu;
     /**
-     * 用于方便打印测试
+     * For convenient printing and testing
      */
     private Gson mGson = new Gson();
     public static final String TAG = AgentWebFragment.class.getSimpleName();
@@ -121,23 +121,23 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
 
         mAgentWeb = AgentWeb.with(this)//
-                .setAgentWebParent((LinearLayout) view, -1, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))//传入AgentWeb的父控件。
-                .useDefaultIndicator(-1, 3)//设置进度条颜色与高度，-1为默认值，高度为2，单位为dp。
-                .setAgentWebWebSettings(getSettings())//设置 IAgentWebSettings。
-                .setWebViewClient(mWebViewClient)//WebViewClient ， 与 WebView 使用一致 ，但是请勿获取WebView调用setWebViewClient(xx)方法了,会覆盖AgentWeb DefaultWebClient,同时相应的中间件也会失效。
-                .setWebChromeClient(new CommonWebChromeClient()) //WebChromeClient
-                .setPermissionInterceptor(mPermissionInterceptor) //权限拦截 2.0.0 加入。
-                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK) //严格模式 Android 4.2.2 以下会放弃注入对象 ，使用AgentWebView没影响。
-                .setAgentWebUIController(new UIController(getActivity())) //自定义UI  AgentWeb3.0.0 加入。
-                .setMainFrameErrorView(com.just.agentweb.R.layout.agentweb_error_page, -1) //参数1是错误显示的布局，参数2点击刷新控件ID -1表示点击整个布局都刷新， AgentWeb 3.0.0 加入。
-                .useMiddlewareWebChrome(getMiddlewareWebChrome()) //设置WebChromeClient中间件，支持多个WebChromeClient，AgentWeb 3.0.0 加入。
+                .setAgentWebParent((LinearLayout) view, -1, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)) // Pass in AgentWeb's parent control.
+                .useDefaultIndicator(-1, 3) // Set progress bar color and height, -1 is default value, height is 2, unit is dp.
+                .setAgentWebWebSettings(getSettings()) // Set IAgentWebSettings.
+                .setWebViewClient(mWebViewClient) // WebViewClient, consistent with WebView usage, but please do not get WebView to call setWebViewClient(xx) method, it will override AgentWeb DefaultWebClient, and corresponding middleware will also fail.
+                .setWebChromeClient(new CommonWebChromeClient()) // WebChromeClient
+                .setPermissionInterceptor(mPermissionInterceptor) // Permission interception added in 2.0.0.
+                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK) // Strict mode, Android 4.2.2 and below will abandon injected objects, using AgentWebView has no effect.
+                .setAgentWebUIController(new UIController(getActivity())) // Custom UI added in AgentWeb 3.0.0.
+                .setMainFrameErrorView(com.just.agentweb.R.layout.agentweb_error_page, -1) // Parameter 1 is the error display layout, parameter 2 click refresh control ID -1 means clicking the entire layout will refresh, added in AgentWeb 3.0.0.
+                .useMiddlewareWebChrome(getMiddlewareWebChrome()) // Set WebChromeClient middleware, support multiple WebChromeClient, added in AgentWeb 3.0.0.
                 .additionalHttpHeader(getUrl(), "cookie", "41bc7ddf04a26b91803f6b11817a5a1c")
-                .useMiddlewareWebClient(getMiddlewareWebClient()) //设置WebViewClient中间件，支持多个WebViewClient， AgentWeb 3.0.0 加入。
-                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)//打开其他页面时，弹窗质询用户前往其他应用 AgentWeb 3.0.0 加入。
-                .interceptUnkownUrl() //拦截找不到相关页面的Url AgentWeb 3.0.0 加入。
-                .createAgentWeb()//创建AgentWeb。
-                .ready()//设置 WebSettings。
-                .go(getUrl()); //WebView载入该url地址的页面并显示。
+                .useMiddlewareWebClient(getMiddlewareWebClient()) // Set WebViewClient middleware, support multiple WebViewClient, added in AgentWeb 3.0.0.
+                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK) // When opening other pages, popup to ask user to go to other applications, added in AgentWeb 3.0.0.
+                .interceptUnkownUrl() // Intercept URLs that cannot find related pages, added in AgentWeb 3.0.0.
+                .createAgentWeb() // Create AgentWeb.
+                .ready() // Set WebSettings.
+                .go(getUrl()); // WebView loads and displays the page at this URL address.
 
 
         AgentWebConfig.debug();
@@ -145,11 +145,11 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
         initView(view);
 
 
-        // AgentWeb 没有把WebView的功能全面覆盖 ，所以某些设置 AgentWeb 没有提供 ， 请从WebView方面入手设置。
+        // AgentWeb does not fully cover WebView functionality, so some settings that AgentWeb does not provide, please set from WebView side.
         mAgentWeb.getWebCreator().getWebView().setOverScrollMode(WebView.OVER_SCROLL_NEVER);
-        //mAgentWeb.getWebCreator().getWebView()  获取WebView .
+        // mAgentWeb.getWebCreator().getWebView() get WebView.
 
-//		mAgentWeb.getWebCreator().getWebView().setOnLongClickListener();
+        // mAgentWeb.getWebCreator().getWebView().setOnLongClickListener();
 
 //		Runtime.getInstance().setFileComparatorFactory(new FileComparator.FileComparatorFactory() {
 //			@Override
@@ -169,10 +169,11 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
         /**
          * PermissionInterceptor 能达到 url1 允许授权， url2 拒绝授权的效果。
+         * PermissionInterceptor can achieve the effect of url1 allowing authorization and url2 denying authorization.
          * @param url
          * @param permissions
          * @param action
-         * @return true 该Url对应页面请求权限进行拦截 ，false 表示不拦截。
+         * @return true intercept permission requests for pages corresponding to this URL, false means no interception.
          */
         @Override
         public boolean intercept(String url, String[] permissions, String action) {
@@ -195,10 +196,10 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
             }
 
             /**
-             * AgentWeb 4.0.0 内部删除了 DownloadListener 监听 ，以及相关API ，将 Download 部分完全抽离出来独立一个库，
-             * 如果你需要使用 AgentWeb Download 部分 ， 请依赖上 compile 'com.download.library:Downloader:4.1.1' ，
-             * 如果你需要监听下载结果，请自定义 AgentWebSetting ， New 出 DefaultDownloadImpl
-             * 实现进度或者结果监听，例如下面这个例子，如果你不需要监听进度，或者下载结果，下面 setDownloader 的例子可以忽略。
+             * AgentWeb 4.0.0 internally removed DownloadListener monitoring and related APIs, completely extracted the Download part into an independent library.
+             * If you need to use AgentWeb Download part, please depend on compile 'com.download.library:Downloader:4.1.1',
+             * If you need to listen to download results, please customize AgentWebSetting, create DefaultDownloadImpl
+             * to implement progress or result listening. For example, in the following example, if you don't need to listen to progress or download results, the setDownloader example below can be ignored.
              * @param webView
              * @param downloadListener
              * @return WebListenerManager
@@ -248,9 +249,9 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     }
 
     /**
-     * 页面空白，请检查scheme是否加上， scheme://host:port/path?query&query 。
+     * If page is blank, please check if scheme is added, scheme://host:port/path?query&query.
      *
-     * @return mUrl
+     * @return URL
      */
     public String getUrl() {
         String target = "";
@@ -282,8 +283,8 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
         }
     };
     /**
-     * 注意，重写WebViewClient的方法,super.xxx()请务必正确调用， 如果没有调用super.xxx(),则无法执行DefaultWebClient的方法
-     * 可能会影响到AgentWeb自带提供的功能,尽可能调用super.xxx()来完成洋葱模型
+     * Note: When overriding WebViewClient methods, super.xxx() must be called correctly. If super.xxx() is not called, DefaultWebClient methods cannot be executed
+     * which may affect AgentWeb's built-in functionality. Try to call super.xxx() to complete the onion model
      */
     protected com.just.agentweb.WebViewClient mWebViewClient = new com.just.agentweb.WebViewClient() {
 
@@ -312,12 +313,12 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
             Log.i(TAG, "view:" + new Gson().toJson(view.getHitTestResult()));
             Log.i(TAG, "mWebViewClient shouldOverrideUrlLoading:" + url);
-            //优酷想唤起自己应用播放该视频 ， 下面拦截地址返回 true  则会在应用内 H5 播放 ，禁止优酷唤起播放该视频， 如果返回 false ， DefaultWebClient  会根据intent 协议处理 该地址 ， 首先匹配该应用存不存在 ，如果存在 ， 唤起该应用播放 ， 如果不存在 ， 则跳到应用市场下载该应用 .
+            // Youku wants to wake up its own app to play the video. If the intercepted address below returns true, it will play H5 in the app and prohibit Youku from waking up to play the video. If it returns false, DefaultWebClient will handle the address according to the intent protocol. First match whether the app exists. If it exists, wake up the app to play. If it doesn't exist, jump to the app market to download the app.
             if (url.startsWith("intent://") && url.contains("com.youku.phone")) {
                 return true;
             }
-			/*else if (isAlipay(view, mUrl))   //1.2.5开始不用调用该方法了 ，只要引入支付宝sdk即可 ， DefaultWebClient 默认会处理相应url调起支付宝
-			    return true;*/
+			/* else if (isAlipay(view, mUrl))   // Starting from 1.2.5, you don't need to call this method anymore. Just import the Alipay SDK. DefaultWebClient will handle the corresponding URL to call Alipay by default
+			    return true; */
             return super.shouldOverrideUrlLoading(view, url);
         }
 
@@ -344,7 +345,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
             }
 
         }
-        /*错误页回调该方法 ， 如果重写了该方法， 上面传入了布局将不会显示 ， 交由开发者实现，注意参数对齐。*/
+        /* Error page callback this method. If this method is overridden, the layout passed in above will not be displayed and will be implemented by the developer. Pay attention to parameter alignment. */
 	   /* public void onMainFrameError(AbsAgentWebUIController agentWebUIController, WebView view, int errorCode, String description, String failingUrl) {
 
             Log.i(TAG, "AgentWebFragment onMainFrameError");
@@ -379,7 +380,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
         super.onActivityResult(requestCode, resultCode, data);
 
         /**
-         * 2.0.0开始 废弃该api ，没有api代替 ,使用 ActionActivity 绕过该方法 ,降低使用门槛,4.0.0 删除该API。
+         * Starting from 2.0.0, this API is deprecated with no API replacement. Use ActionActivity to bypass this method to lower the usage threshold. This API is removed in 4.0.0.
          */
 //        mAgentWeb.uploadFileResult(requestCode, resultCode, data);
     }
@@ -400,7 +401,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
         mSearchImageView.setOnClickListener(mOnClickListener);
         mSimpleSearchView = view.findViewById(R.id.search_view);
         pageNavigator(View.GONE);
-        mSimpleSearchView.setHint("请输入网址");
+        mSimpleSearchView.setHint("Please enter URL");
         EditText editText = mSimpleSearchView.findViewById(com.ferfalk.simplesearchview.R.id.searchEditText);
         editText.setImeOptions(EditorInfo.IME_ACTION_GO);
 //        mSimpleSearchView.setSearchBackground(new ColorDrawable(getColorPrimary()));
@@ -449,7 +450,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
             switch (v.getId()) {
                 case R.id.iv_back:
-                    // true表示AgentWeb处理了该事件
+                    // true means AgentWeb handled this event
                     if (!mAgentWeb.back()) {
                         AgentWebFragment.this.getActivity().finish();
                     }
@@ -472,13 +473,13 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     };
 
     /**
-     * 打开浏览器
+     * Open browser
      *
-     * @param targetUrl 外部浏览器打开的地址
+     * @param targetUrl URL to open in external browser
      */
     private void openBrowser(String targetUrl) {
         if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-            Toast.makeText(this.getContext(), targetUrl + " 该链接无法使用浏览器打开。", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getContext(), targetUrl + " This link cannot be opened with browser.", Toast.LENGTH_SHORT).show();
             return;
         }
         Intent intent = new Intent();
@@ -490,9 +491,9 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
 
     /**
-     * 显示更多菜单
+     * Show more menu
      *
-     * @param view 菜单依附在该View下面
+     * @param view Menu attached below this View
      */
     private void showPoPup(View view) {
         if (mPopupMenu == null) {
@@ -504,7 +505,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     }
 
     /**
-     * 菜单事件
+     * Menu events
      */
     private PopupMenu.OnMenuItemClickListener mOnMenuItemClickListener = new PopupMenu.OnMenuItemClickListener() {
         @SuppressLint("NonConstantResourceId")
@@ -515,7 +516,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
                 case R.id.refresh:
                     if (mAgentWeb != null) {
-                        mAgentWeb.getUrlLoader().reload(); // 刷新
+                        mAgentWeb.getUrlLoader().reload(); // Refresh
                     }
                     return true;
 
@@ -534,7 +535,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
                     return true;
                 case R.id.error_website:
                     loadErrorWebSite();
-                    // test DownloadingService
+                    // Test DownloadingService
 //			        LogUtils.i(TAG, " :" + mDownloadingService + "  " + (mDownloadingService == null ? "" : mDownloadingService.isShutdown()) + "  :" + mExtraService);
 //                    if (mDownloadingService != null && !mDownloadingService.isShutdown()) {
 //                        mExtraService = mDownloadingService.shutdownNow();
@@ -554,7 +555,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     };
 
     /**
-     * 测试错误页的显示
+     * Test error page display
      */
     private void loadErrorWebSite() {
         if (mAgentWeb != null) {
@@ -563,16 +564,16 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     }
 
     /**
-     * 清除 WebView 缓存
+     * Clear WebView cache
      */
     private void toCleanWebCache() {
 
         if (this.mAgentWeb != null) {
 
-            //清理所有跟WebView相关的缓存 ，数据库， 历史记录 等。
+            // Clear all WebView-related cache, database, history, etc.
             this.mAgentWeb.clearWebCache();
-            Toast.makeText(getActivity(), "已清理缓存", Toast.LENGTH_SHORT).show();
-            //清空所有 AgentWeb 硬盘缓存，包括 WebView 的缓存 , AgentWeb 下载的图片 ，视频 ，apk 等文件。
+            Toast.makeText(getActivity(), "Cache cleared", Toast.LENGTH_SHORT).show();
+            // Clear all AgentWeb disk cache, including WebView cache, AgentWeb downloaded images, videos, apk and other files.
 //            AgentWebConfig.clearDiskCache(this.getContext());
         }
 
@@ -580,7 +581,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
 
     /**
-     * 复制字符串
+     * Copy string
      *
      * @param context
      * @param text
@@ -595,14 +596,14 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
 
     @Override
     public void onResume() {
-        mAgentWeb.getWebLifeCycle().onResume();//恢复
+        mAgentWeb.getWebLifeCycle().onResume(); // Resume
         super.onResume();
     }
 
     @Override
     public void onPause() {
 
-        mAgentWeb.getWebLifeCycle().onPause(); //暂停应用内所有WebView ， 调用mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); 恢复。
+        mAgentWeb.getWebLifeCycle().onPause(); // Pause all WebView in the application. Call mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); to resume.
         super.onPause();
     }
 
@@ -622,10 +623,10 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     }
 
     /**
-     * MiddlewareWebClientBase 是 AgentWeb 3.0.0 提供一个强大的功能，
-     * 如果用户需要使用 AgentWeb 提供的功能， 不想重写 WebClientView方
-     * 法覆盖AgentWeb提供的功能，那么 MiddlewareWebClientBase 是一个
-     * 不错的选择 。
+     * MiddlewareWebClientBase is a powerful feature provided by AgentWeb 3.0.0.
+     * If users need to use the functionality provided by AgentWeb and don't want to override WebClientView
+     * methods to cover AgentWeb's functionality, then MiddlewareWebClientBase is a
+     * good choice.
      *
      * @return
      */
@@ -640,12 +641,12 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Log.e(TAG, "MiddlewareWebClientBase#shouldOverrideUrlLoading url:" + url);
-				/*if (url.startsWith("agentweb")) { // 拦截 url，不执行 DefaultWebClient#shouldOverrideUrlLoading
+				/* if (url.startsWith("agentweb")) { // Intercept url, do not execute DefaultWebClient#shouldOverrideUrlLoading
 					Log.i(TAG, "agentweb scheme ~");
 					return true;
-				}*/
+				} */
 
-                if (super.shouldOverrideUrlLoading(view, url)) { // 执行 DefaultWebClient#shouldOverrideUrlLoading
+                if (super.shouldOverrideUrlLoading(view, url)) { // Execute DefaultWebClient#shouldOverrideUrlLoading
                     return true;
                 }
                 // do you work
@@ -673,26 +674,26 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
     }
 
     /**
-     * 选择文件后回调该方法， 这里可以做文件压缩 / 也可以做图片的方向调整
+     * Callback this method after selecting files. Here you can do file compression / or image orientation adjustment
      *
-     * @param type     customize/system  ， customize 表示通过js方式获取文件， 把文件
-     *                 转成base64的方式返回给js，这种方式兼容性高，但是存在文件过大转成base64时
-     *                 字符串长度过长，导致与js通信失败问题，所以很有必要压缩文件， 尽量控制字符串长度在512kb以内。
+     * @param type     customize/system, customize means getting files through js method, converting files
+     *                 to base64 and returning to js. This method has high compatibility, but there is a problem that when files are too large and converted to base64,
+     *                 the string length is too long, causing js communication failure. So it is necessary to compress files and try to control string length within 512kb.
      *                 <p>
-     *                 system 这种方式，是由input/file 标签触发的文件选择，这种方式缺点是在Android 4.4 不回调
-     *                 fileChooser，存在兼容性问题，但是经过升级，基本可以忽略了，api 的兼容性越来越好了， 回调
-     *                 返回是于uri形式，所以不存在文件大小问题，作图片预览也很快。(推荐这种方式)
-     * @param uri      文件的uri
+     *                 system method is file selection triggered by input/file tag. The disadvantage of this method is that it does not callback
+     *                 fileChooser on Android 4.4, which has compatibility issues. But after upgrades, it can basically be ignored. API compatibility is getting better and better. Callback
+     *                 returns in uri form, so there is no file size problem, and image preview is also fast. (Recommended method)
+     * @param uri      File uri
      * @param callback
      */
     @Override
     public void compressFile(String type, final Uri[] uri, ValueCallback<Uri[]> callback) {
         Log.e(TAG, "compressFile type:" + type);
-        if ("system".equals(type)) { // input/file 标签触发的文件选择，这种方式不存在性能问题，可压缩也可以不压缩，具体看自己业务要求
+        if ("system".equals(type)) { // File selection triggered by input/file tag, this method has no performance issues, can be compressed or not, depending on your business requirements
             callback.onReceiveValue(uri);
             return;
         }
-        // customize.equals(type)  这种方式强烈建议文件压缩
+        // customize.equals(type) This method strongly recommends file compression
         if (uri == null || uri.length == 0) {
             callback.onReceiveValue(uri);
         } else {
@@ -713,8 +714,8 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileC
                         } else {
                             File origin = new File(filePath);
                             File file = Luban.with(App.mContext).ignoreBy(100).setTargetDir(AgentWebUtils.getAgentWebFilePath(App.mContext)).get(filePath);
-                            Log.e(TAG, "原文件大小：" + byte2FitMemorySize(origin.length()));
-                            Log.e(TAG, "压缩后文件大小：" + byte2FitMemorySize(file.length()));
+                            Log.e(TAG, "Original file size: " + byte2FitMemorySize(origin.length()));
+                            Log.e(TAG, "Compressed file size: " + byte2FitMemorySize(file.length()));
 
                             Uri fileUri = AgentWebUtils.getUriFromFile(App.mContext, file);
                             result[i] = fileUri;

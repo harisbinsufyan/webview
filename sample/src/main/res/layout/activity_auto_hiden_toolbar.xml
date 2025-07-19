@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="后退"
+            android:text="Back"
             android:textColor="#fff" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="前进"
+            android:text="Forward"
             android:textColor="#fff" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="刷新"
+            android:text="Refresh"
             android:textColor="#fff" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="菜单"
+            android:text="Menu"
             android:textColor="#fff" />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

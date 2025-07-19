@@ -27,7 +27,7 @@ import com.just.agentweb.sample.widget.WebLayout;
 /**
  * Created by cenxiaozhong on 2017/5/26.
  * <p>
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public class BaseWebActivity extends AppCompatActivity {
@@ -121,8 +121,8 @@ public class BaseWebActivity extends AppCompatActivity {
 
         if (mAlertDialog == null) {
             mAlertDialog = new AlertDialog.Builder(this)
-                    .setMessage("您确定要关闭该页面吗?")
-                    .setNegativeButton("再逛逛", new DialogInterface.OnClickListener() {
+                    .setMessage("Are you sure you want to close this page?")
+                    .setNegativeButton("Browse more", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (mAlertDialog != null) {
@@ -130,7 +130,7 @@ public class BaseWebActivity extends AppCompatActivity {
                             }
                         }
                     })//
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -178,7 +178,7 @@ public class BaseWebActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //mAgentWeb.destroy();
+        // mAgentWeb.destroy();
         mAgentWeb.getWebLifeCycle().onDestroy();
     }
 }

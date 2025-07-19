@@ -6,33 +6,33 @@
 
     <item
         android:id="@+id/refresh"
-        android:title="刷新网页"
+        android:title="Refresh page"
         android:visible="true"
         app:showAsAction="never"/>
 
 
     <item
         android:id="@+id/copy"
-        android:title="复制链接"
+        android:title="Copy link"
         android:visible="true"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/default_clean"
-        android:title="清空缓存"
+        android:title="Clear cache"
         android:visible="false"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/error_website"
-        android:title="显示错误页"
+        android:title="Show error page"
         android:visible="true"
         app:showAsAction="never"/>
 
 
     <item
         android:id="@+id/default_browser"
-        android:title="在浏览器打开"
+        android:title="Open in browser"
         android:visible="true"
         app:showAsAction="never"/>
 

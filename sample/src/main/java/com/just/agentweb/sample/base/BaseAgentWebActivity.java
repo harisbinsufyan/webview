@@ -27,7 +27,7 @@ import com.just.agentweb.WebViewClient;
 /**
  * Created by cenxiaozhong on 2017/7/22.
  * <p>
- * source code  https://github.com/Justson/AgentWeb
+ * Source code: https://github.com/Justson/AgentWeb
  */
 
 public abstract class BaseAgentWebActivity extends AppCompatActivity {
