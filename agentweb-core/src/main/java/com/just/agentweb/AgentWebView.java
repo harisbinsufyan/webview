@@ -134,15 +134,25 @@ public class AgentWebView extends LollipopFixedWebView {
     @Override
     public void destroy() {
         setVisibility(View.GONE);
+        
+        // Clear all callbacks and handlers first
+        if (getHandler() != null) {
+            getHandler().removeCallbacksAndMessages(null);
+        }
+        
         if (mJsCallJavas != null) {
             mJsCallJavas.clear();
+            mJsCallJavas = null;
         }
         if (mInjectJavaScripts != null) {
             mInjectJavaScripts.clear();
+            mInjectJavaScripts = null;
         }
+        
         removeAllViewsInLayout();
         fixedStillAttached();
         releaseConfigCallback();
+        
         if (mIsInited) {
             resetAccessibilityEnabled();
             LogUtils.i(TAG, "destroy web");

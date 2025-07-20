@@ -77,6 +77,11 @@ public class WebParentLayout extends FrameLayout implements Provider<AbsAgentWeb
 			createErrorLayout();
 			container = this.mErrorLayout;
 		}
+		
+		if (container == null) {
+			return;
+		}
+		
 		View clickView = null;
 		if (mClickId != -1 && (clickView = container.findViewById(mClickId)) != null) {
 			clickView.setClickable(true);
@@ -86,17 +91,29 @@ public class WebParentLayout extends FrameLayout implements Provider<AbsAgentWeb
 	}
 
 	private void createErrorLayout() {
+		if (getContext() == null) {
+			return;
+		}
+		
 		final FrameLayout mFrameLayout = new FrameLayout(getContext());
 		mFrameLayout.setBackgroundColor(Color.WHITE);
 		mFrameLayout.setId(R.id.mainframe_error_container_id);
 		if (this.mErrorView == null) {
 			LayoutInflater mLayoutInflater = LayoutInflater.from(getContext());
 			LogUtils.i(TAG, "mErrorLayoutRes:" + mErrorLayoutRes);
-			mLayoutInflater.inflate(mErrorLayoutRes, mFrameLayout, true);
+			try {
+				mLayoutInflater.inflate(mErrorLayoutRes, mFrameLayout, true);
+			} catch (Exception e) {
+				LogUtils.e(TAG, "Error inflating error layout", e);
+				return;
+			}
 		} else {
 			mFrameLayout.addView(mErrorView);
 		}
 		ViewStub mViewStub = (ViewStub) this.findViewById(R.id.mainframe_error_viewsub_id);
+		if (mViewStub == null) {
+			return;
+		}
 		final int index = this.indexOfChild(mViewStub);
 		this.removeViewInLayout(mViewStub);
 		final ViewGroup.LayoutParams layoutParams = getLayoutParams();

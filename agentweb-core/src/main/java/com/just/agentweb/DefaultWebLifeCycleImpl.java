@@ -26,13 +26,15 @@ import android.webkit.WebView;
  */
 public class DefaultWebLifeCycleImpl implements WebLifeCycle {
     private WebView mWebView;
+    private boolean mIsDestroyed = false;
+    
     DefaultWebLifeCycleImpl(WebView webView) {
         this.mWebView = webView;
     }
 
     @Override
     public void onResume() {
-        if (this.mWebView != null) {
+        if (this.mWebView != null && !mIsDestroyed) {
             if (Build.VERSION.SDK_INT >= 11){
                 this.mWebView.onResume();
             }
@@ -42,7 +44,7 @@ public class DefaultWebLifeCycleImpl implements WebLifeCycle {
 
     @Override
     public void onPause() {
-        if (this.mWebView != null) {
+        if (this.mWebView != null && !mIsDestroyed) {
             if (Build.VERSION.SDK_INT >= 11){
                 this.mWebView.onPause();
             }
@@ -52,9 +54,11 @@ public class DefaultWebLifeCycleImpl implements WebLifeCycle {
 
     @Override
     public void onDestroy() {
-        if(this.mWebView!=null){
+        if(this.mWebView != null && !mIsDestroyed){
+            mIsDestroyed = true;
             this.mWebView.resumeTimers();
+            AgentWebUtils.clearWebView(this.mWebView);
+            this.mWebView = null;
         }
-        AgentWebUtils.clearWebView(this.mWebView);
     }
 }

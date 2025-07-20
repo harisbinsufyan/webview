@@ -145,7 +145,8 @@ public final class AgentActionFragment extends Fragment {
             return;
         }
         if (requestCode == REQUEST_CODE) {
-            if (mAction.getUri() != null) {
+            Uri actionUri = mAction.getUri();
+            if (actionUri != null) {
                 chooserActionCallback(resultCode, new Intent().putExtra(KEY_URI, mAction.getUri()));
             } else {
                 chooserActionCallback(resultCode, data);
@@ -161,6 +162,13 @@ public final class AgentActionFragment extends Fragment {
             resetAction();
             return;
         }
+        
+        // Check if fragment is still attached
+        if (!isAdded() || getActivity() == null) {
+            resetAction();
+            return;
+        }
+        
         if (mAction.getRationaleListener() != null) {
             boolean rationale = false;
             for (String permission : permissions) {

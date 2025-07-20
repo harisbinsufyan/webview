@@ -711,6 +711,10 @@ public class AgentWebUtils {
 		return Looper.myLooper() == Looper.getMainLooper();
 	}
 
+	public static boolean isMainThread() {
+		return Thread.currentThread() == Looper.getMainLooper().getThread();
+	}
+
 	static boolean isEmptyCollection(Collection collection) {
 		return collection == null || collection.isEmpty();
 	}
@@ -830,7 +834,11 @@ public class AgentWebUtils {
 		if (mHandler == null) {
 			mHandler = new Handler(Looper.getMainLooper());
 		}
-		mHandler.post(runnable);
+		if (isMainThread()) {
+			runnable.run();
+		} else {
+			mHandler.post(runnable);
+		}
 	}
 
 	public static boolean showFileChooserCompat(Activity activity,

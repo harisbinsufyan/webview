@@ -31,6 +31,7 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
 
     private WebView mWebView;
     private Handler mHandler = new Handler(Looper.getMainLooper());
+    private volatile boolean mIsDestroyed = false;
 
     public static JsAccessEntraceImpl getInstance(WebView webView) {
         return new JsAccessEntraceImpl(webView);
@@ -42,9 +43,15 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
     }
 
     private void safeCallJs(final String s, final ValueCallback valueCallback) {
+        if (mIsDestroyed) {
+            return;
+        }
         mHandler.post(new Runnable() {
             @Override
             public void run() {
+                if (mIsDestroyed) {
+                    return;
+                }
                 callJs(s, valueCallback);
             }
         });
@@ -52,6 +59,9 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
 
     @Override
     public void callJs(String params, final ValueCallback<String> callback) {
+        if (mIsDestroyed || mWebView == null) {
+            return;
+        }
         if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             safeCallJs(params, callback);
             return;
@@ -59,5 +69,12 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
         super.callJs(params,callback);
     }
 
+    public void destroy() {
+        mIsDestroyed = true;
+        mWebView = null;
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+        }
+    }
 
 }

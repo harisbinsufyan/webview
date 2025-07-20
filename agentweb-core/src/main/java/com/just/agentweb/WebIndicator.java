@@ -273,8 +273,9 @@ public class WebIndicator extends BaseIndicatorView implements BaseIndicatorSpec
          */
         if (mAnimator != null && mAnimator.isStarted()) {
             mAnimator.cancel();
-            mAnimator = null;
         }
+        mAnimator = null;
+        mCurrentProgress = 0f;
     }
 
     private void doEnd() {

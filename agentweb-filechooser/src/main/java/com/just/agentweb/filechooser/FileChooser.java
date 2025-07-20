@@ -317,6 +317,16 @@ public class FileChooser {
         if (mActivity == null) {
             return;
         }
+        
+        if (mActivity.isFinishing()) {
+            cancel();
+            return;
+        }
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed()) {
+            cancel();
+            return;
+        }
 
         if (mPermissionInterceptor != null) {
             if (mPermissionInterceptor.intercept(FileChooser.this.mWebView.getUrl(), AgentWebPermissions.CAMERA, "camera")) {

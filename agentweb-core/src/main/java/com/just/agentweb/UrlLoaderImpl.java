@@ -78,6 +78,12 @@ public class UrlLoaderImpl implements IUrlLoader {
 			});
 			return;
 		}
+		
+		if (mWebView == null) {
+			LogUtils.e(TAG, "WebView is null, cannot load URL: " + url);
+			return;
+		}
+		
 		LogUtils.i(TAG, "loadUrl:" + url + " headers:" + headers);
 		if (headers == null || headers.isEmpty()) {
 			this.mWebView.loadUrl(url);
@@ -97,6 +103,12 @@ public class UrlLoaderImpl implements IUrlLoader {
 			});
 			return;
 		}
+		
+		if (mWebView == null) {
+			LogUtils.e(TAG, "WebView is null, cannot reload");
+			return;
+		}
+		
 		this.mWebView.reload();
 	}
 

@@ -99,15 +99,24 @@ public class DefaultDownloadImpl implements android.webkit.DownloadListener {
     }
 
     protected void onDownloadStartInternal(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-        if (null == mActivityWeakReference.get() || mActivityWeakReference.get().isFinishing()) {
+        Activity activity = mActivityWeakReference.get();
+        if (activity == null || activity.isFinishing()) {
             return;
         }
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed()) {
+            return;
+        }
+        
         if (null != this.mPermissionListener) {
             if (this.mPermissionListener.intercept(url, new String[]{}, "download")) {
                 return;
             }
         }
         ResourceRequest resourceRequest = createResourceRequest(url);
+        if (resourceRequest == null) {
+            return;
+        }
         this.mDownloadTasks.put(url, resourceRequest);
         preDownload(url);
     }

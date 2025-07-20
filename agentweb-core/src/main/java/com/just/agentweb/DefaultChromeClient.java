@@ -172,6 +172,10 @@ public class DefaultChromeClient extends MiddlewareWebChromeBase {
     }
 
     private void onGeolocationPermissionsShowPromptInternal(String origin, GeolocationPermissions.Callback callback) {
+        if (callback == null) {
+            return;
+        }
+        
         if (mPermissionInterceptor != null) {
             if (mPermissionInterceptor.intercept(this.mWebView.getUrl(), AgentWebPermissions.LOCATION, "location")) {
                 callback.invoke(origin, false, false);
@@ -183,6 +187,12 @@ public class DefaultChromeClient extends MiddlewareWebChromeBase {
             callback.invoke(origin, false, false);
             return;
         }
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed()) {
+            callback.invoke(origin, false, false);
+            return;
+        }
+        
         List<String> deniedPermissions = null;
         if ((deniedPermissions = AgentWebUtils.getDeniedPermissions(mActivity, AgentWebPermissions.LOCATION)).isEmpty()) {
             LogUtils.i(TAG, "onGeolocationPermissionsShowPromptInternal:" + true);
