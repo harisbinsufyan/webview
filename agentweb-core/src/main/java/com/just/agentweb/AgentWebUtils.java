@@ -319,35 +319,6 @@ public class AgentWebUtils {
 
 	private static WeakReference<Snackbar> snackbarWeakReference;
 
-	static void show(View parent,
-	                 CharSequence text,
-	                 int duration,
-	                 @ColorInt int textColor,
-	                 @ColorInt int bgColor,
-	                 CharSequence actionText,
-	                 @ColorInt int actionTextColor,
-	                 View.OnClickListener listener) {
-		SpannableString spannableString = new SpannableString(text);
-		ForegroundColorSpan colorSpan = new ForegroundColorSpan(textColor);
-		spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, spannableString, duration));
-		Snackbar snackbar = snackbarWeakReference.get();
-		View view = snackbar.getView();
-		view.setBackgroundColor(bgColor);
-		if (actionText != null && actionText.length() > 0 && listener != null) {
-			snackbar.setActionTextColor(actionTextColor);
-			snackbar.setAction(actionText, listener);
-		}
-		snackbar.show();
-	}
-
-	static void dismiss() {
-		if (snackbarWeakReference != null && snackbarWeakReference.get() != null) {
-			snackbarWeakReference.get().dismiss();
-			snackbarWeakReference = null;
-		}
-	}
-
 	public static boolean checkWifi(Context context) {
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (connectivity == null) {
@@ -715,36 +686,6 @@ public class AgentWebUtils {
 		return Thread.currentThread() == Looper.getMainLooper().getThread();
 	}
 
-	static boolean isEmptyCollection(Collection collection) {
-		return collection == null || collection.isEmpty();
-	}
-
-	static boolean isEmptyMap(Map map) {
-		return map == null || map.isEmpty();
-	}
-
-	private static Toast mToast = null;
-	static void toastShowShort(Context context, String msg) {
-		if (mToast == null) {
-			mToast = Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT);
-		} else {
-			mToast.setText(msg);
-		}
-		mToast.show();
-	}
-
-	@Deprecated
-	static void getUIControllerAndShowMessage(Activity activity, String message, String from) {
-		if (activity == null || activity.isFinishing()) {
-			return;
-		}
-		WebParentLayout mWebParentLayout = (WebParentLayout) activity.findViewById(R.id.web_parent_layout_id);
-		AbsAgentWebUIController mAgentWebUIController = mWebParentLayout.provide();
-		if (mAgentWebUIController != null) {
-			mAgentWebUIController.onShowMessage(message, from);
-		}
-	}
-
 	public static boolean hasPermission(@NonNull Context context, @NonNull String... permissions) {
 		return hasPermission(context, Arrays.asList(permissions));
 	}
@@ -783,25 +724,9 @@ public class AgentWebUtils {
 		return deniedPermissions;
 	}
 
-
 	public static AbsAgentWebUIController getAgentWebUIControllerByWebView(WebView webView) {
 		WebParentLayout mWebParentLayout = getWebParentLayoutByWebView(webView);
 		return mWebParentLayout.provide();
-	}
-
-	//获取应用的名称
-	public static String getApplicationName(Context context) {
-		PackageManager packageManager = null;
-		ApplicationInfo applicationInfo = null;
-		try {
-			packageManager = context.getApplicationContext().getPackageManager();
-			applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), 0);
-		} catch (PackageManager.NameNotFoundException e) {
-			applicationInfo = null;
-		}
-		String applicationName =
-				(String) packageManager.getApplicationLabel(applicationInfo);
-		return applicationName;
 	}
 
 	static WebParentLayout getWebParentLayoutByWebView(WebView webView) {

@@ -1,4 +1,3 @@
-
 /*
  * Copyright (C)  Justson(https://github.com/Justson/AgentWeb)
  *
@@ -34,7 +33,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -157,8 +156,8 @@ public final class AgentActionFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestPermission(Action action) {
-        List<String> permissions = action.getPermissions();
-        if (AgentWebUtils.isEmptyCollection(permissions)) {
+        ArrayList<String> permissions = action.getPermissions();
+        if (permissions == null || permissions.isEmpty()) {
             resetAction();
             return;
         }

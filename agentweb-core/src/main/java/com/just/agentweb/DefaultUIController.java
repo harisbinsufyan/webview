@@ -363,12 +363,12 @@ public class DefaultUIController extends AbsAgentWebUIController {
 		if (!TextUtils.isEmpty(from) && from.contains("performDownload")) {
 			return;
 		}
-		AgentWebUtils.toastShowShort(mActivity.getApplicationContext(), message);
+		android.widget.Toast.makeText(mActivity.getApplicationContext(), message, android.widget.Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onPermissionsDeny(String[] permissions, String permissionType, String action) {
-//		AgentWebUtils.toastShowShort(mActivity.getApplicationContext(), "权限被冻结");
+		// Permission denied - can be handled by implementation
 	}
 
 	@Override

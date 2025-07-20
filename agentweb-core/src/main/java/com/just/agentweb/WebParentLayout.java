@@ -174,8 +174,7 @@ public class WebParentLayout extends FrameLayout implements Provider<AbsAgentWeb
 			this.mErrorLayoutRes = R.layout.agentweb_error_page;
 		}
 	}
-
-	@Override
+	
 	public AbsAgentWebUIController provide() {
 		return this.mAgentWebUIController;
 	}

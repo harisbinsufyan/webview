@@ -206,7 +206,7 @@ public abstract class BaseAgentWebActivity extends AppCompatActivity {
 
     public @Nullable
     AgentWebUIControllerImplBase getAgentWebUIController() {
-        return null;
+        return mAgentWebUIController;
     }
 
     public @Nullable

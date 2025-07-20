@@ -67,14 +67,7 @@ public class DefaultDesignUIController extends DefaultUIController {
             }
         }
         try {
-            AgentWebUtils.show(view,
-                    message,
-                    Snackbar.LENGTH_SHORT,
-                    Color.WHITE,
-                    mActivity.getResources().getColor(R.color.black),
-                    null,
-                    -1,
-                    null);
+            Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
         } catch (Throwable throwable) {
             if (LogUtils.isDebug()){
                 throwable.printStackTrace();

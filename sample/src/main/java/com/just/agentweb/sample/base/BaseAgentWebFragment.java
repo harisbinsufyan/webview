@@ -75,7 +75,7 @@ public abstract class BaseAgentWebFragment extends Fragment {
 
     protected @Nullable
     AgentWebUIControllerImplBase getAgentWebUIController() {
-        return mAgentWebUIController;
+        return null;
     }
 
     protected static class ErrorLayoutEntity {

@@ -3,13 +3,8 @@
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
         maven { url "https://jitpack.io" }
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.1.4"
@@ -21,19 +16,10 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url "https://jitpack.io" }
-        jcenter()
         google()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
     }
-
-
 }
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-//tasks.getByPath(":agentweb-core:mavenAndroidJavadocs").enabled = false
-//tasks.getByPath(":agentweb-download:mavenAndroidJavadocs").enabled = false
-//tasks.getByPath(":agentweb-filechooser:mavenAndroidJavadocs").enabled = false

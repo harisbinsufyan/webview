@@ -58,7 +58,6 @@ import com.just.agentweb.sample.app.App;
 import com.just.agentweb.sample.client.MiddlewareChromeClient;
 import com.just.agentweb.sample.client.MiddlewareWebViewClient;
 import com.just.agentweb.sample.common.CommonWebChromeClient;
-import com.just.agentweb.sample.common.FragmentKeyDown;
 import com.just.agentweb.sample.common.UIController;
 import com.just.agentweb.sample.utils.FileUtils;
 
@@ -79,7 +78,7 @@ import top.zibin.luban.Luban;
  * Source code: https://github.com/Justson/AgentWeb
  */
 
-public class AgentWebFragment extends Fragment implements FragmentKeyDown, FileCompressor.FileCompressEngine {
+public class AgentWebFragment extends Fragment implements FileCompressor.FileCompressEngine {
 
     private ImageView mBackImageView;
     private View mLineView;

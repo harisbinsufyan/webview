@@ -10,7 +10,6 @@ import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 import com.just.agentweb.sample.R;
-import com.just.agentweb.sample.common.FragmentKeyDown;
 import com.just.agentweb.sample.fragment.AgentWebFragment;
 import com.just.agentweb.sample.fragment.BounceWebFragment;
 import com.just.agentweb.sample.fragment.CustomIndicatorFragment;
@@ -176,8 +175,7 @@ public class CommonActivity extends AppCompatActivity {
 
 		AgentWebFragment mAgentWebFragment = this.mAgentWebFragment;
 		if (mAgentWebFragment != null) {
-			FragmentKeyDown mFragmentKeyDown = mAgentWebFragment;
-			if (mFragmentKeyDown.onFragmentKeyDown(keyCode, event)) {
+			if (mAgentWebFragment.onFragmentKeyDown(keyCode, event)) {
 				return true;
 			} else {
 				return super.onKeyDown(keyCode, event);
