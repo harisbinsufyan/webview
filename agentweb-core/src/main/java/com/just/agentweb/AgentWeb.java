@@ -303,27 +303,31 @@ public final class AgentWeb {
     public void destroy() {
         this.mWebLifeCycle.onDestroy();
         
-        // Clean up references to prevent memory leaks
-        if (mJsAccessEntrace instanceof JsAccessEntraceImpl) {
-            ((JsAccessEntraceImpl) mJsAccessEntrace).destroy();
-        }
-        
-        mJsAccessEntrace = null;
-        mIUrlLoader = null;
-        mWebLifeCycle = null;
-        mIndicatorController = null;
-        mWebCreator = null;
-        mAgentWebSettings = null;
-        mWebListenerManager = null;
-        mWebSecurityController = null;
-        mJsInterfaceHolder = null;
-        mIVideo = null;
-        mPermissionInterceptor = null;
-        mEventInterceptor = null;
-        
-        if (mJavaObjects != null) {
-            mJavaObjects.clear();
-            mJavaObjects = null;
+        try {
+            // Clean up references to prevent memory leaks
+            if (mJsAccessEntrace instanceof JsAccessEntraceImpl) {
+                ((JsAccessEntraceImpl) mJsAccessEntrace).destroy();
+            }
+            
+            mJsAccessEntrace = null;
+            mIUrlLoader = null;
+            mWebLifeCycle = null;
+            mIndicatorController = null;
+            mWebCreator = null;
+            mAgentWebSettings = null;
+            mWebListenerManager = null;
+            mWebSecurityController = null;
+            mJsInterfaceHolder = null;
+            mIVideo = null;
+            mPermissionInterceptor = null;
+            mEventInterceptor = null;
+            
+            if (mJavaObjects != null) {
+                mJavaObjects.clear();
+                mJavaObjects = null;
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error during destroy", e);
         }
     }
 

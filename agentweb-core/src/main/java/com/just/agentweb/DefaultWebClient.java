@@ -432,22 +432,28 @@ public class DefaultWebClient extends MiddlewareWebClientBase {
 
 
 	private boolean handleCommonLink(String url) {
+		if (TextUtils.isEmpty(url)) {
+			return false;
+		}
 		if (url.startsWith(WebView.SCHEME_TEL)
 				|| url.startsWith(SCHEME_SMS)
 				|| url.startsWith(WebView.SCHEME_MAILTO)
 				|| url.startsWith(WebView.SCHEME_GEO)) {
 			try {
-				Activity mActivity = null;
-				if ((mActivity = mWeakReference.get()) == null) {
+				Activity mActivity = mWeakReference.get();
+				if (mActivity == null || mActivity.isFinishing()) {
+					return false;
+				}
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed()) {
 					return false;
 				}
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse(url));
 				mActivity.startActivity(intent);
 			} catch (ActivityNotFoundException ignored) {
-				if (AgentWebConfig.DEBUG) {
-					ignored.printStackTrace();
-				}
+				LogUtils.e(TAG, "Activity not found for URL: " + url, ignored);
+			} catch (Exception e) {
+				LogUtils.e(TAG, "Error handling common link", e);
 			}
 			return true;
 		}

@@ -100,37 +100,41 @@ public class VideoImpl implements IVideo, EventInterceptor {
             return;
         }
         
-        Activity activity = mActivity;
-        if (activity != null && !activity.isFinishing()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed()) {
-                return;
-            }
-            mActivity.setRequestedOrientation(mOriginalOrientation);
-        }
-        
-        if (!mFlags.isEmpty()) {
-            for (Pair<Integer, Integer> mPair : mFlags) {
-                if (activity != null && !activity.isFinishing()) {
-                    activity.getWindow().setFlags(mPair.second, mPair.first);
+        try {
+            Activity activity = mActivity;
+            if (activity != null && !activity.isFinishing()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed()) {
+                    return;
                 }
+                mActivity.setRequestedOrientation(mOriginalOrientation);
             }
-            mFlags.clear();
-        }
-        
-        mMoiveView.setVisibility(View.GONE);
-        if (mMoiveParentView != null && mMoiveView != null) {
-            mMoiveParentView.removeView(mMoiveView);
-        }
-        if (mMoiveParentView != null) {
-            mMoiveParentView.setVisibility(View.GONE);
-        }
-        if (this.mCallback != null) {
-            mCallback.onCustomViewHidden();
-            mCallback = null;
-        }
-        this.mMoiveView = null;
-        if (mWebView != null) {
-            mWebView.setVisibility(View.VISIBLE);
+            
+            if (!mFlags.isEmpty()) {
+                for (Pair<Integer, Integer> mPair : mFlags) {
+                    if (activity != null && !activity.isFinishing()) {
+                        activity.getWindow().setFlags(mPair.second, mPair.first);
+                    }
+                }
+                mFlags.clear();
+            }
+            
+            mMoiveView.setVisibility(View.GONE);
+            if (mMoiveParentView != null && mMoiveView != null) {
+                mMoiveParentView.removeView(mMoiveView);
+            }
+            if (mMoiveParentView != null) {
+                mMoiveParentView.setVisibility(View.GONE);
+            }
+            if (this.mCallback != null) {
+                mCallback.onCustomViewHidden();
+                mCallback = null;
+            }
+            this.mMoiveView = null;
+            if (mWebView != null) {
+                mWebView.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error hiding custom view", e);
         }
     }
 

@@ -165,7 +165,22 @@ public class UrlLoaderImpl implements IUrlLoader {
 			});
 			return;
 		}
-		this.mWebView.postUrl(url, postData);
+		
+		if (mWebView == null) {
+			LogUtils.e(TAG, "WebView is null, cannot post URL");
+			return;
+		}
+		
+		if (TextUtils.isEmpty(url)) {
+			LogUtils.e(TAG, "URL is empty, cannot post");
+			return;
+		}
+		
+		try {
+			this.mWebView.postUrl(url, postData);
+		} catch (Exception e) {
+			LogUtils.e(TAG, "Error posting URL: " + url, e);
+		}
 	}
 
 	@Override

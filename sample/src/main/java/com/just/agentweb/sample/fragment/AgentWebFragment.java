@@ -155,3 +155,16 @@ public class AgentWebFragment extends Fragment implements FileCompressor.FileCom
                 .setAgentWebWebSettings(getSettings()) // Set IAgentWebSettings.
                 .setWebViewClient(mWebViewClient) // WebViewClient, consistent with WebView usage, but please do not get WebView to call setWebViewClient(xx) method, it will override AgentWeb DefaultWebClient, and corresponding middleware will also fail.
                 .setWebChromeClient(new CommonWebChromeClient()) // WebChromeClient
+
+    @Override
+    public void onDestroy() {
+        // Unregister file compressor
+        FileCompressor.getInstance().unregisterFileCompressEngine(this);
+        
+        // Destroy AgentWeb
+        if (mAgentWeb != null) {
+            mAgentWeb.getWebLifeCycle().onDestroy();
+        }
+        
+        super.onDestroy();
+    }

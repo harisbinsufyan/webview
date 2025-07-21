@@ -187,10 +187,14 @@ public class AgentWebView extends LollipopFixedWebView {
         } catch (Throwable e) {
             Pair<Boolean, String> pair = isWebViewPackageException(e);
             if (pair.first) {
-                Toast.makeText(getContext(), pair.second, Toast.LENGTH_SHORT).show();
+                try {
+                    android.widget.Toast.makeText(getContext(), pair.second, android.widget.Toast.LENGTH_SHORT).show();
+                } catch (Exception toastException) {
+                    LogUtils.e(TAG, "Error showing toast", toastException);
+                }
                 destroy();
             } else {
-                throw e;
+                LogUtils.e(TAG, "Error setting over scroll mode", e);
             }
         }
     }

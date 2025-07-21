@@ -289,9 +289,13 @@ public class WebIndicator extends BaseIndicatorView implements BaseIndicatorSpec
 
     @Override
     public void reset() {
-        mCurrentProgress = 0;
-        if (mAnimator != null && mAnimator.isStarted()) {
-            mAnimator.cancel();
+        try {
+            mCurrentProgress = 0;
+            if (mAnimator != null && mAnimator.isStarted()) {
+                mAnimator.cancel();
+            }
+        } catch (Exception e) {
+            LogUtils.e("WebIndicator", "Error during reset", e);
         }
     }
 

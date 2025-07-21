@@ -360,7 +360,11 @@ public class DefaultChromeClient extends MiddlewareWebChromeBase {
         }
         Activity mActivity = this.mActivityWeakReference.get();
         if (mActivity == null || mActivity.isFinishing()) {
-            valueCallback.onReceiveValue(new Object());
+            valueCallback.onReceiveValue(null);
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed()) {
+            valueCallback.onReceiveValue(null);
             return;
         }
         AgentWebUtils.showFileChooserCompat(mActivity,

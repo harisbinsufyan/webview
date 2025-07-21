@@ -478,32 +478,32 @@ public class FileChooser {
     }
 
     private void cancel() {
-        if (mJsChannel) {
-            mJsChannelCallback.call(null);
-            return;
-        }
-        if (mUriValueCallback != null) {
-            try {
-                mUriValueCallback.onReceiveValue(null);
-                mUriValueCallback = null;
-            } catch (Throwable ignored) {
-                if (AgentWebConfig.DEBUG) {
-                    ignored.printStackTrace();
+        try {
+            if (mJsChannel) {
+                if (mJsChannelCallback != null) {
+                    mJsChannelCallback.call(null);
+                }
+                return;
+            }
+            if (mUriValueCallback != null) {
+                try {
+                    mUriValueCallback.onReceiveValue(null);
+                    mUriValueCallback = null;
+                } catch (Throwable ignored) {
+                    LogUtils.e(TAG, "Error canceling URI callback", ignored);
                 }
             }
-        }
-        if (mUriValueCallbacks != null) {
-            try {
-                mUriValueCallbacks.onReceiveValue(null);
-                mUriValueCallbacks = null;
-            } catch (Throwable ignored) {
-                if (AgentWebConfig.DEBUG) {
-                    ignored.printStackTrace();
+            if (mUriValueCallbacks != null) {
+                try {
+                    mUriValueCallbacks.onReceiveValue(null);
+                    mUriValueCallbacks = null;
+                } catch (Throwable ignored) {
+                    LogUtils.e(TAG, "Error canceling URI callbacks", ignored);
                 }
             }
-
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error during cancel", e);
         }
-        return;
     }
 
 

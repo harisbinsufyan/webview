@@ -71,9 +71,14 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
 
     public void destroy() {
         mIsDestroyed = true;
-        mWebView = null;
-        if (mHandler != null) {
-            mHandler.removeCallbacksAndMessages(null);
+        try {
+            mWebView = null;
+            if (mHandler != null) {
+                mHandler.removeCallbacksAndMessages(null);
+                mHandler = null;
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error during destroy", e);
         }
     }
 
