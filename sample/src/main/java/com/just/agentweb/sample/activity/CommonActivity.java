@@ -173,9 +173,8 @@ public class CommonActivity extends AppCompatActivity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-		AgentWebFragment mAgentWebFragment = this.mAgentWebFragment;
-		if (mAgentWebFragment != null) {
-			if (mAgentWebFragment.onFragmentKeyDown(keyCode, event)) {
+		if (this.mAgentWebFragment != null) {
+			if (this.mAgentWebFragment.onFragmentKeyDown(keyCode, event)) {
 				return true;
 			} else {
 				return super.onKeyDown(keyCode, event);

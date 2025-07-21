@@ -116,7 +116,7 @@ public class WebParentLayout extends FrameLayout implements Provider<AbsAgentWeb
 		}
 		final int index = this.indexOfChild(mViewStub);
 		this.removeViewInLayout(mViewStub);
-		final ViewGroup.LayoutParams layoutParams = getLayoutParams();
+		final ViewGroup.LayoutParams layoutParams = mViewStub.getLayoutParams();
 		if (layoutParams != null) {
 			this.addView(this.mErrorLayout = mFrameLayout, index, layoutParams);
 		} else {
@@ -175,6 +175,7 @@ public class WebParentLayout extends FrameLayout implements Provider<AbsAgentWeb
 		}
 	}
 	
+	@Override
 	public AbsAgentWebUIController provide() {
 		return this.mAgentWebUIController;
 	}

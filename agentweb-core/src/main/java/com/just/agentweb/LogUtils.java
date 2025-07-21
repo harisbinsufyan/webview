@@ -55,7 +55,9 @@ class LogUtils {
     }
 
     static void e(String tag, String msg, Throwable tr) {
-        Log.e(tag, msg, tr);
+        if (isDebug()) {
+            Log.e(PREFIX.concat(tag), msg, tr);
+        }
     }
 
     static void e(String tag, String message) {

@@ -32,6 +32,9 @@ import com.download.library.ResourceRequest;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentHashMap;
 
+import android.os.Build;
+import java.util.concurrent.ConcurrentHashMap;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

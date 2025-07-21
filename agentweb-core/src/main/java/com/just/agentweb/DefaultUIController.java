@@ -44,6 +44,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
+import android.widget.Toast;
 
 /**
  * @author cenxiaozhong
@@ -65,7 +66,7 @@ public class DefaultUIController extends AbsAgentWebUIController {
 
 	@Override
 	public void onJsAlert(WebView view, String url, String message) {
-		AgentWebUtils.toastShowShort(view.getContext().getApplicationContext(), message);
+		Toast.makeText(view.getContext().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -175,7 +176,7 @@ public class DefaultUIController extends AbsAgentWebUIController {
 				return;
 			}
 		}
-		mAlertDialog = new AlertDialog.Builder(mActivity)
+		AlertDialog alertDialog = new AlertDialog.Builder(mActivity)
 				.setSingleChoiceItems(ways, -1, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -197,7 +198,7 @@ public class DefaultUIController extends AbsAgentWebUIController {
 						}
 					}
 				}).create();
-		mAlertDialog.show();
+		alertDialog.show();
 	}
 
 	private void onJsConfirmInternal(String message, JsResult jsResult) {

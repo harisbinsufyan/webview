@@ -20,10 +20,6 @@ package com.just.agentweb;
  * @author cenxiaozhong
  * @since 1.0.0
  */
-public class HookManager {
-    
-    public static AgentWeb hookAgentWeb(AgentWeb agentWeb, AgentWeb.AgentBuilder builder) {
-        // Hook implementation can be added here if needed
-        return agentWeb;
-    }
+public interface Provider<T> {
+    T provide();
 }

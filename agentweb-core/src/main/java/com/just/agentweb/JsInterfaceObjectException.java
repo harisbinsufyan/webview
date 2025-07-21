@@ -20,10 +20,13 @@ package com.just.agentweb;
  * @author cenxiaozhong
  * @since 1.0.0
  */
-public class HookManager {
+public class JsInterfaceObjectException extends RuntimeException {
     
-    public static AgentWeb hookAgentWeb(AgentWeb agentWeb, AgentWeb.AgentBuilder builder) {
-        // Hook implementation can be added here if needed
-        return agentWeb;
+    public JsInterfaceObjectException(String message) {
+        super(message);
+    }
+    
+    public JsInterfaceObjectException(String message, Throwable cause) {
+        super(message, cause);
     }
 }
