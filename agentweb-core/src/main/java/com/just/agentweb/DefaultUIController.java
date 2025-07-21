@@ -139,6 +139,12 @@ public class DefaultUIController extends AbsAgentWebUIController {
 			return;
 		}
 		
+		
+		// Prevent multiple dialogs
+		if (mAlertDialog != null && mAlertDialog.isShowing()) {
+			return;
+		}
+		
 		AlertDialog mAlertDialog = null;
 		mAlertDialog = new AlertDialog.Builder(mActivity)
 				.setTitle(mResources.getString(R.string.agentweb_tips))

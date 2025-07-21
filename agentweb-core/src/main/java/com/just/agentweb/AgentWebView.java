@@ -74,7 +74,7 @@ public class AgentWebView extends LollipopFixedWebView {
      * 2、在webViewClient.onPageStarted中都注入JS；
      * 3、在webChromeClient.onProgressChanged中都注入JS，并且不能通过自检查（onJsPrompt里面判断）JS是否注入成功来减少注入JS的次数，因为网页中的JS可以同时打开多个url导致无法控制检查的准确性；
      *
-     * @deprecated Android 4.2.2及以上版本的 addJavascriptInterface 方法已经解决了安全问题，如果不使用“网页能将JS函数传到Java层”功能，不建议使用该类，毕竟系统的JS注入效率才是最高的；
+     * @deprecated Android 4.2.2及以上版本的 addJavascriptInterface 方法已经解决了安全问题，如果不使用"网页能将JS函数传到Java层"功能，不建议使用该类，毕竟系统的JS注入效率才是最高的；
      */
     @Override
     @Deprecated
@@ -211,7 +211,7 @@ public class AgentWebView extends LollipopFixedWebView {
     }
 
     /**
-     * 添加并注入JavaScript脚本（和“addJavascriptInterface”注入对象的注入时机一致，100%能注入成功）；
+     * 添加并注入JavaScript脚本（和"addJavascriptInterface"注入对象的注入时机一致，100%能注入成功）；
      * 注意：为了做到能100%注入，需要在注入的js中自行判断对象是否已经存在（如：if (typeof(window.Android) = 'undefined')）；
      *
      * @param javaScript
@@ -237,7 +237,7 @@ public class AgentWebView extends LollipopFixedWebView {
     }
 
     /**
-     * 构建一个“不会重复注入”的js脚本；
+     * 构建一个"不会重复注入"的js脚本；
      *
      * @param key
      * @param js
@@ -259,7 +259,7 @@ public class AgentWebView extends LollipopFixedWebView {
     }
 
     /**
-     * 构建一个“带try catch”的js脚本；
+     * 构建一个"带try catch"的js脚本；
      *
      * @param js
      * @return
