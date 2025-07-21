@@ -18,6 +18,7 @@ package com.just.agentweb;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.webkit.WebView;
 
 import java.util.Map;
@@ -156,6 +157,11 @@ public class UrlLoaderImpl implements IUrlLoader {
 
 	@Override
 	public void postUrl(final String url, final byte[] postData) {
+		if (TextUtils.isEmpty(url)) {
+			LogUtils.e(TAG, "URL is empty, cannot post");
+			return;
+		}
+		
 		if (!AgentWebUtils.isUIThread()) {
 			mHandler.post(new Runnable() {
 				@Override
@@ -166,6 +172,16 @@ public class UrlLoaderImpl implements IUrlLoader {
 			return;
 		}
 		
+		if (mWebView == null) {
+			LogUtils.e(TAG, "WebView is null, cannot post URL");
+			return;
+		}
+		
+		try {
+			this.mWebView.postUrl(url, postData);
+		} catch (Exception e) {
+			LogUtils.e(TAG, "Error posting URL: " + url, e);
+		}
 		if (mWebView == null) {
 			LogUtils.e(TAG, "WebView is null, cannot post URL");
 			return;

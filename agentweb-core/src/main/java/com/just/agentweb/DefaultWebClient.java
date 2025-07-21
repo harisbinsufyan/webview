@@ -447,6 +447,9 @@ public class DefaultWebClient extends MiddlewareWebClientBase {
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed()) {
 					return false;
 				}
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed()) {
+					return false;
+				}
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse(url));
 				mActivity.startActivity(intent);
