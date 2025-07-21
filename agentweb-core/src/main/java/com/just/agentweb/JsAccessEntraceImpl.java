@@ -32,6 +32,7 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
     private WebView mWebView;
     private Handler mHandler = new Handler(Looper.getMainLooper());
     private volatile boolean mIsDestroyed = false;
+    private volatile boolean mIsDestroyed = false;
 
     public static JsAccessEntraceImpl getInstance(WebView webView) {
         return new JsAccessEntraceImpl(webView);
@@ -46,9 +47,15 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
         if (mIsDestroyed) {
             return;
         }
+        if (mIsDestroyed) {
+            return;
+        }
         mHandler.post(new Runnable() {
             @Override
             public void run() {
+                if (mIsDestroyed) {
+                    return;
+                }
                 if (mIsDestroyed) {
                     return;
                 }
@@ -62,11 +69,27 @@ public class JsAccessEntraceImpl extends BaseJsAccessEntrace {
         if (mIsDestroyed || mWebView == null) {
             return;
         }
+        if (mIsDestroyed || mWebView == null) {
+            return;
+        }
         if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             safeCallJs(params, callback);
             return;
         }
         super.callJs(params,callback);
+    }
+
+    public void destroy() {
+        mIsDestroyed = true;
+        try {
+            mWebView = null;
+            if (mHandler != null) {
+                mHandler.removeCallbacksAndMessages(null);
+                mHandler = null;
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error during destroy", e);
+        }
     }
 
     public void destroy() {

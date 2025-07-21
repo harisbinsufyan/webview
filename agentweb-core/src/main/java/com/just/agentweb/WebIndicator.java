@@ -195,9 +195,13 @@ public class WebIndicator extends BaseIndicatorView implements BaseIndicatorSpec
     }
 
     private void startAnim(boolean isFinished) {
-        float v = isFinished ? 100 : 95;
-        if (mAnimator != null && mAnimator.isStarted()) {
-            mAnimator.cancel();
+        try {
+            mCurrentProgress = 0;
+            if (mAnimator != null && mAnimator.isStarted()) {
+                mAnimator.cancel();
+            }
+        } catch (Exception e) {
+            LogUtils.e("WebIndicator", "Error during reset", e);
         }
         mCurrentProgress = mCurrentProgress == 0f ? 0.00000001f : mCurrentProgress;
         if (!isFinished) {
@@ -271,11 +275,15 @@ public class WebIndicator extends BaseIndicatorView implements BaseIndicatorSpec
         /**
          * animator cause leak , if not cancel;
          */
-        if (mAnimator != null && mAnimator.isStarted()) {
-            mAnimator.cancel();
+        try {
+            if (mAnimator != null && mAnimator.isStarted()) {
+                mAnimator.cancel();
+            }
+            mAnimator = null;
+            mCurrentProgress = 0f;
+        } catch (Exception e) {
+            LogUtils.e("WebIndicator", "Error during onDetachedFromWindow", e);
         }
-        mAnimator = null;
-        mCurrentProgress = 0f;
     }
 
     private void doEnd() {

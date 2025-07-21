@@ -28,6 +28,8 @@ public class DefaultWebLifeCycleImpl implements WebLifeCycle {
     private WebView mWebView;
     private boolean mIsDestroyed = false;
     
+    private boolean mIsDestroyed = false;
+    
     DefaultWebLifeCycleImpl(WebView webView) {
         this.mWebView = webView;
     }
@@ -58,6 +60,11 @@ public class DefaultWebLifeCycleImpl implements WebLifeCycle {
             if(this.mWebView != null && !mIsDestroyed){
                 mIsDestroyed = true;
                 this.mWebView.resumeTimers();
+                AgentWebUtils.clearWebView(this.mWebView);
+                this.mWebView = null;
+            }
+        } catch (Exception e) {
+            LogUtils.e("DefaultWebLifeCycleImpl", "Error during onDestroy", e);
                 AgentWebUtils.clearWebView(this.mWebView);
                 this.mWebView = null;
             }

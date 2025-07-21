@@ -168,6 +168,13 @@ public final class AgentActionFragment extends Fragment {
             return;
         }
         
+        
+        // Check if fragment is still attached
+        if (!isAdded() || getActivity() == null) {
+            resetAction();
+            return;
+        }
+        
         if (mAction.getRationaleListener() != null) {
             boolean rationale = false;
             for (String permission : permissions) {
